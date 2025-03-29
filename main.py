@@ -31,7 +31,7 @@ def index():
 
 @app.route('/upload', methods=["POST"])
 def upload():
-    file = request.files['form_file']
+    file = request.files['form_file'] 
     time_stamp = int(time.time())
     filename = f"{time_stamp}_{file.filename}"
     file.save(os.path.join("./files", filename))
@@ -48,12 +48,12 @@ def list_files():
     for i in downloads:
       download_file(bucket_name,i)
 
-    files = os.listdir("./files")
+    files = os.listdir("./files")  
     jpegs = []
     for file in files:
         if file.lower().endswith((".jpeg", ".jpg")):
             jpegs.append(file)
-
+    
     return jpegs
 
 @app.route('/files/<filename>')
